@@ -188,7 +188,7 @@ python setup.py install
 ```
 git clone https://github.com/NVIDIA/MinkowskiEngine
 cd MinkowskiEngine
-docker build -t MinkowskiEngine docker
+docker build -t minkowski_engine docker
 ```
 
 Once the docker is built, check it loads MinkowskiEngine correctly.
@@ -281,6 +281,14 @@ page](https://github.com/NVIDIA/MinkowskiEngine/issues).
 
 
 ## Known Issues
+
+### Specifying CUDA architecture list
+
+In some cases, you need to explicitly specify which compute capability your GPU uses. The default list might not contain your architecture.
+
+```bash
+export TORCH_CUDA_ARCH_LIST="5.2 6.0 6.1 7.0 7.5 8.0 8.6+PTX"; python setup.py install --force_cuda
+```
 
 ### Unhandled Out-Of-Memory thrust::system exception
 
